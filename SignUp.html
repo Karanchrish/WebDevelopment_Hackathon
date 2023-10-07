@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        h2{
+            text-align: center;
+        }
+        .container {
+            max-width: 400px;
+            height: auto;
+            margin-left: 38%;
+            margin-top: 10%;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            border: 2px solid #000000;
+            border-radius: 3px;
+        }
+
+        button {
+            background-color: #000000;
+            color: #fff;
+            border-color: #000000;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-left: 40%;
+        }
+
+        button:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Sign-up</h2>
+        <div class="form-group">
+            <label for="email">User Email:</label>
+            <input type="text" id="email" placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter your password">
+        </div>
+        <button onclick="validateForm()">Sign Up</button>
+    </div>
+
+    <script>
+        function validateForm() {
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            var passwordPattern = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[0-9]).{8,}$/;
+
+            if (!emailPattern.test(email)) {
+                alert("Invalid email address. Please enter a valid email.");
+            } else if (!passwordPattern.test(password)) {
+                alert("Invalid password. Please make sure it meets the password criteria:\n\n" +
+                      "1. At least 8 characters\n" +
+                      "2. At least one uppercase letter\n" +
+                      "3. At least one lowercase letter\n" +
+                      "4. At least one special character (!@#$%^&*)\n" +
+                      "5. At least one number");
+            } else {
+                alert("Sign-up successful!");
+            }
+        }
+    </script>
+</body>
+</html>

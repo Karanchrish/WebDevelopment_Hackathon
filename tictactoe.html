@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tic Tac Toe</title>
+	<style>
+        .container {
+	text-align: center;
+}
+
+.board {
+	display: flex;
+	flex-wrap: wrap;
+	width: 300px;
+	margin: 0 auto;
+}
+
+.square {
+	width: 90px;
+	height: 90px;
+	background-color: #f2f2f2;
+	margin: 5px;
+	border-radius: 5px;
+	font-size: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+.square:hover {
+	background-color: #e6e6e6;
+}
+
+.square.X {
+	color: #ff5e5e;
+}
+
+.square.O {
+	color: #5e9cff;
+}
+h1{
+    color: red;
+}
+p{
+    color: rgb(45, 126, 248);
+}
+button{
+    padding: 10px;
+    margin-top: 3%;
+    border-color: rgb(45, 126, 248);
+    color: rgb(45, 126, 248);
+    border-radius: 2px solid rgb(45, 126, 248);
+}
+    </style>
+</head>
+<body>
+	<div class="container">
+		<h1>TIC TAC TOE</h1>
+        <p>Game starts by just Tap on box</p>
+        <p>First Player starts as <b>Player X</b> And Second Player as <b>Player O</b></p>
+		<div class="board">
+			<div class="square"></div>
+			<div class="square"></div>
+			<div class="square"></div>
+			<div class="square"></div>
+			<div class="square"></div>
+			<div class="square"></div>
+			<div class="square"></div>
+			<div class="square"></div>
+			<div class="square"></div>
+		</div>
+		<button id="reset">RESET</button>
+	</div>
+
+	<script>
+        const squares = document.querySelectorAll('.square');
+const resetButton = document.querySelector('#reset');
+
+let currentPlayer = 'X';
+
+squares.forEach(square => {
+	square.addEventListener('click', () => {
+		if (square.innerHTML === '') {
+			square.innerHTML = currentPlayer;
+			square.classList.add(currentPlayer);
+			currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+		}
+	});
+});
+
+resetButton.addEventListener('click', () => {
+	squares.forEach(square => {
+		square.innerHTML = '';
+		square.classList.remove('X');
+		square.classList.remove('O');
+	});
+	currentPlayer = 'X';
+});
+    </script>
+</body>
+</html>
